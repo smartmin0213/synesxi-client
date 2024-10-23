@@ -27,7 +27,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ icon, caption, href }) => {
   );
 };
 
-export default function Sidebar() {
+const Sidebar = () => {
   return (
     <div className="w-[216px] h-[826px] border-r border-r-[rgba(220,222,224,0.2)] mr-[17px] flex flex-col">
       <div className="h-[154px] flex items-center justify-center">
@@ -55,4 +55,6 @@ export default function Sidebar() {
       </div>
     </div>
   );
-}
+};
+
+export default Sidebar;
