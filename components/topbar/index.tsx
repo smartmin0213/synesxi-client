@@ -1,52 +1,48 @@
-import { FaSearch, FaLock } from 'react-icons/fa';
+'use client';
 
-const TopBar = () => {
+import Image from 'next/image';
+
+export default function Topbar() {
   return (
-    <div className="flex items-center justify-between w-full h-14 bg-gray-900 px-4 shadow-lg rounded-lg">
+    <div className='flex items-center justify-between bg-gray-900 p-4 rounded-lg shadow-lg w-full'>
       {/* Search Bar */}
-      <div className="flex items-center w-1/2 bg-gray-800 p-2 rounded-md">
-        <FaSearch className="text-gray-400" />
+      <div className='flex items-center bg-gray-800 text-gray-400 rounded-lg p-2 w-1/2'>
+        <span className='text-gray-500'>
+          <svg xmlns='http://www.w3.org/2000/svg' className='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'>
+            <path fillRule='evenodd' d='M12.9 14.32a8 8 0 111.42-1.42l4.68 4.68a1 1 0 01-1.42 1.42l-4.68-4.68zM8 14a6 6 0 100-12 6 6 0 000 12z' clipRule='evenodd' />
+          </svg>
+        </span>
         <input
-          type="text"
-          placeholder="Search..."
-          className="bg-transparent text-gray-400 ml-2 w-full outline-none"
+          type='text'
+          placeholder='Search...'
+          className='bg-transparent outline-none px-2 text-gray-300 w-full'
         />
       </div>
 
       {/* Connect Wallet Button */}
-      <button className="bg-purple-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-purple-700 transition">
+      <button className='ml-4 bg-purple-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-purple-500'>
         Connect Wallet
       </button>
 
       {/* Profile Section */}
-      <div className="flex items-center space-x-4">
-        {/* Lock Icon */}
-        <div className="relative">
-          <FaLock className="text-gray-400" />
-          <span className="absolute top-0 right-0 bg-white text-xs text-black p-1 rounded-full">1</span>
+      <div className='ml-4 flex items-center bg-gray-800 py-2 px-4 rounded-lg cursor-pointer'>
+        <Image
+          src='/assets/user-avatar.png' // Replace with your actual avatar image path
+          alt='User Avatar'
+          width={32}
+          height={32}
+          className='rounded-full'
+        />
+        <div className='ml-2'>
+          <p className='text-white text-sm'>Username</p>
+          <p className='text-gray-400 text-xs'>profile ID</p>
         </div>
-
-        {/* Username and Profile ID */}
-        <div className="text-white">
-          <p className="font-semibold">Username</p>
-          <p className="text-xs text-gray-400">Profile ID</p>
-        </div>
-
-        {/* Dropdown Icon */}
-        <button>
-          <svg
-            className="w-4 h-4 text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+        <span className='ml-2 text-gray-500'>
+          <svg xmlns='http://www.w3.org/2000/svg' className='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'>
+            <path fillRule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clipRule='evenodd' />
           </svg>
-        </button>
+        </span>
       </div>
     </div>
   );
-};
-
-export default TopBar;
+}

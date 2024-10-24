@@ -1,31 +1,47 @@
-import type { Metadata } from "next";
-import "./globals.css";
+'use client';
 
-import SideBar from "@/components/sidebar";
-import TopBar from "@/components/topbar";
-import Footer from "@/components/footer";
+import './globals.css';
 
-export const metadata: Metadata = {
-  title: "Synesxi",
-  description: "Synesxi Client",
-};
+import { usePathname } from 'next/navigation';
+
+import SideBar from '@/components/sidebar';
+import TopBar from '@/components/topbar';
+import Footer from '@/components/footer';
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+
+  const getContent = () => {
+    const modals = ['/login', '/register'];
+    if (modals.includes(pathname)) {
+      return children;
+    } else {
+      return (
+        <>
+          <TopBar />
+          {children}
+          <Footer />
+        </>
+      );
+    }
+  };
+
   return (
-    <html lang="en">
+    <html lang='en'>
+      <head>
+        <title>Synesxi</title>
+      </head>
       <body>
-        <div className="max-w-[1440px] mx-auto flex">
-          <div className="w-[216px] h-[826px] mr-[17px]">
+        <div className='max-w-[1440px] mx-auto flex bg-[#1F1F24]'>
+          <div className='w-[216px] h-[826px] mr-[17px]'>
             <SideBar />
           </div>
-          <div className="w-[1207px]">
-            <TopBar />
-            {children}
-            <Footer />
+          <div className='w-[1207px]'>
+            {getContent()}
           </div>
         </div>
       </body>
