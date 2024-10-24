@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-import Sidebar from "@/components/sidebar";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import SideBar from "@/components/sidebar";
+import TopBar from "@/components/topbar";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Synesxi",
@@ -26,13 +17,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
         <div className="max-w-[1440px] mx-auto flex">
-          <Sidebar />
-          
-          {children}
+          <div className="w-[216px] h-[826px] mr-[17px]">
+            <SideBar />
+          </div>
+          <div className="w-[1207px]">
+            <TopBar />
+            {children}
+            <Footer />
+          </div>
         </div>
       </body>
     </html>

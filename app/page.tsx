@@ -1,9 +1,14 @@
-import Signin from "@/components/signin";
+'use client';
+
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function Home() {
-  return (
-    <>
-      <Signin />
-    </>
-  );
+  const router = useRouter()
+
+  useEffect(() => {
+    router.push('/login')
+  }, [])
+
+  return
 }
